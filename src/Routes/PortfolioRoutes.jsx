@@ -10,7 +10,7 @@ import Project from '../Pages/Portfolio/Project'
 import Notfound from '../components/Notfound'
 import ForgetPass from '../Pages/Portfolio/ForgetPass'
 import ScrollToView from '../components/ScrollToView'
-import { getProfile } from '../api/profileApi'
+import { getProfile } from '../api/profileAPI'
 
 function PortfolioRoutes({ setIsLoggedIn }) {
     const [profile, setProfile] = useState([])
