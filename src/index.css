@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@layer components {
+  .nav-link {
+    @apply relative px-1 after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-0.5 after:bg-red-700 after:transition-all after:w-0 after:duration-300;
+  }
+
+  .nav-link:hover {
+    @apply after:w-full cursor-pointer;
+  }
+
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  .profilePic::after,
+  .profilePic::before {
+    position: absolute;
+    content: "";
+    inset: -3px;
+    background: conic-gradient(from var(--angle), red, blue, green, red);
+    border-radius: inherit;
+    animation: rotate 5s linear infinite;
+    z-index: -1
+  }
+
+  .profilePic::before {
+    filter: blur(25px);
+  }
+
+  @keyframes rotate {
+    from {
+      ---angle: 0deg;
+    }
+
+    to {
+      --angle: 360deg;
+    }
+  }
+
+  .typing {
+    @apply w-full border-r-3 overflow-hidden whitespace-nowrap animate-[typing_4s_steps(20)_infinite_alternate,blink_0.8s_step-end_infinite] delay-1000 border-white
+  }
+
+  @keyframes typing {
+    0% {
+      width: 100%;
+    }
+
+    30% {
+      width: 100%;
+    }
+
+    100% {
+      width: 5%;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+
+  }
+}
