@@ -7,7 +7,7 @@ const api = axios.create({
   withCredentials: true,
 });
 
-const changePassword = (passwordData) => api.post("/change-password", passwordData);
-const forgotPassword = (userData) => api.post("/forgot-password", userData);
+const changePassword = (passwordData) => api.post("password/change-password", passwordData);
+const forgotPassword = (userData) => api.post("password/forgot-password", userData);
 
 export { changePassword, forgotPassword }
