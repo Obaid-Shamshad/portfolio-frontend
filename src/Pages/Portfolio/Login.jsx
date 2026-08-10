@@ -18,6 +18,7 @@ function Login({ setIsLoggedIn }) {
     e.preventDefault()
     try {
       const response = await login(cradentials);
+      console.log("Login response:", response.data);
       if (response.data.success === true) {
         console.log("Login successful:", response.data);
         window.localStorage.setItem("userId", response.data.userId);
