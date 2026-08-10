@@ -77,19 +77,19 @@ function EditProject() {
           <h1 className='text-xl font-semibold text-center py-2'>Edit Project</h1>
           <div className='flex flex-col gap-1'>
             <label htmlFor="title">Title</label>
-            <input type="text" name="title" id="title" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} className='border border-gray-400 p-1 px-2 rounded-md focus:shadow-[0_0_3px_blue] outline-none' required />
+            <input type="text" name="title" id="title" value={formData?.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} className='border border-gray-400 p-1 px-2 rounded-md focus:shadow-[0_0_3px_blue] outline-none' required />
           </div>
           <div className='flex flex-col gap-1'>
             <label htmlFor="description">Description</label>
-            <textarea name="description" id="description" value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} className='border border-gray-400 h-20 p-1 px-2 rounded-md focus:shadow-[0_0_3px_blue] outline-none' required></textarea>
+            <textarea name="description" id="description" value={formData?.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })} className='border border-gray-400 h-20 p-1 px-2 rounded-md focus:shadow-[0_0_3px_blue] outline-none' required></textarea>
           </div>
           <div className='flex flex-col gap-1'>
             <label htmlFor="liveLink">Live Link</label>
-            <input type="text" name="liveLink" id="liveLink" value={formData.liveLink} onChange={(e) => setFormData({ ...formData, liveLink: e.target.value })} className='border border-gray-400 p-1 px-2 rounded-md focus:shadow-[0_0_3px_blue] outline-none' required />
+            <input type="text" name="liveLink" id="liveLink" value={formData?.liveLink} onChange={(e) => setFormData({ ...formData, liveLink: e.target.value })} className='border border-gray-400 p-1 px-2 rounded-md focus:shadow-[0_0_3px_blue] outline-none' required />
           </div>
           <div className='flex flex-col gap-1'>
             <label htmlFor="githubLink">GitHub Link</label>
-            <input type="text" name="githubLink" id="githubLink" value={formData.githubLink} onChange={(e) => setFormData({ ...formData, githubLink: e.target.value })} className='border border-gray-400 p-1 px-2 rounded-md focus:shadow-[0_0_3px_blue] outline-none' required />
+            <input type="text" name="githubLink" id="githubLink" value={formData?.githubLink} onChange={(e) => setFormData({ ...formData, githubLink: e.target.value })} className='border border-gray-400 p-1 px-2 rounded-md focus:shadow-[0_0_3px_blue] outline-none' required />
           </div>
           <div className='flex flex-col gap-1'>
             <h1>Upload image</h1>

@@ -11,7 +11,7 @@ function WebSkill() {
             try {
                 const response = await getSkills();
                 setSkills(response.data.skills);
-                const types = [...new Set(response.data.skills.map(skill => skill.category))];
+                const types = [...new Set(response.data?.skills?.map(skill => skill.category))];
                 setSkillType(types);
             } catch (error) {
                 console.error('Error fetching skills:', error);
@@ -28,7 +28,7 @@ function WebSkill() {
                         <h1 className='text-3xl font-bold text-white text-shadow-lg text-shadow-black border-b-2 border-gray-500 w-3/4 text-center py-8'><span className='text-red-500'>My</span> Skills</h1>
                     </div>
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-8 p-4  md:px-12 lg:px-24 text-white'>
-                        {skillType.map((type, index) => (
+                        {skillType?.map((type, index) => (
                             <div key={index} className='flex w-full max-w-98 flex-col gap-4 shadow-[0_0_5px_white] hover:scale-[1.03] hover:shadow-[0_0_20px_gray] p-2 rounded-md items-center transition-all duration-500'>
                                 <h1 className='text-xl font-bold border-b-2 border-gray-500 w-full text-center p-2'>{type}</h1>
                                 <div className='flex w-full flex-col gap-2 '>
