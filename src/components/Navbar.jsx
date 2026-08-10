@@ -6,14 +6,13 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Navbar({ isOpenSidebar, setIsOpenSidebar, setIsLoggedIn }) {
-  const userId = localStorage.getItem('userId');
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
       let response = await logout();
-      if (response.data.success) {
-        localStorage.removeItem('userId');
+      if (response.data.success === true) {
+        window.localStorage.removeItem('userId');
         navigate('/');
         setIsLoggedIn(false);
       } else {
