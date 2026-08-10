@@ -21,7 +21,7 @@ function Login({ setIsLoggedIn }) {
       if (response.data.success === true) {
         window.localStorage.setItem("userId", response.data.userId);
         setIsLoggedIn(true);
-        return navigate("/dashboard");
+        navigate("/dashboard");
       }
       if (response.data.success === false) {
         toast.error(response.data.message);
