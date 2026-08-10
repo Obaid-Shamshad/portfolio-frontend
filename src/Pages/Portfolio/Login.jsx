@@ -19,6 +19,7 @@ function Login({ setIsLoggedIn }) {
     try {
       const response = await login(cradentials);
       if (response.data.success === true) {
+        console.log("Login successful:", response.data);
         window.localStorage.setItem("userId", response.data.userId);
         setIsLoggedIn(true);
         navigate("/dashboard");
