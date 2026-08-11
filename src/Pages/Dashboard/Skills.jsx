@@ -8,14 +8,17 @@ import { ToastContainer, toast } from 'react-toastify';
 
 function Skills() {
   const [skills, setSkills] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchSkills = async () => {
       try {
         const response = await getSkills();
         setSkills(response.data.skills);
+        loading(false);
       } catch (error) {
         console.error('Error fetching skills:', error);
+        loading(false);
       }
     };
 
@@ -36,49 +39,79 @@ function Skills() {
     }
   };
 
+  const Skeleton = () => {
+    return (
+      <div className="flex items-center justify-around border border-gray-300 p-2">
+        <div className='w-1/6 animate-pulse space-y-2 [animation-delay:0ms]'>
+          <div className="h-2 w-full  bg-gray-300"></div>
+          <div className="h-2 w-full  bg-gray-300"></div>
+          <div className="h-2 w-full  bg-gray-300"></div>
+        </div>
+        <div className="w-2/6 space-y-2 rounded animate-pulse [animation-delay:200ms]">
+          <div className="h-2 w-full  bg-gray-300"></div>
+          <div className="h-2 w-full  bg-gray-300"></div>
+          <div className="h-2 w-full  bg-gray-300"></div>
+        </div>
+        <div className="w-1/6 flex gap-1 items-center rounded animate-pulse [animation-delay:400ms]">
+          <div className="h-10 w-full bg-gray-300"></div>
+          <div className="h-10 w-full bg-gray-300"></div>
+        </div>
+
+      </div>
+    );
+  };
+
   return (
     <>
       <div className='lg:ml-64 p-1 sm:p-4'>
         <div className="w-full mt-20 p-2 bg-gray-50 border rounded-lg border-gray-200">
           <h1 className='text-2xl font-bold text-center p-4 border-b-2 border-gray-300 mb-2'>My Skills</h1>
           <Link to="/dashboard/add-skill" className="ml-4 mb-4 font-bold inline-block cursor-pointer bg-blue-500 hover:bg-blue-600 text-white rounded-md p-2 px-4">Add +</Link>
-          <table className="w-full table-fixed border-collapse">
+          {loading ? (
+            <Skeleton />
+          ) : (
+            <div>
+              {skills.length > 0 ? (
+                <table className="w-full table-fixed border-collapse">
 
-            <thead className="bg-gray-100 border-b border-gray-300 ">
-              <tr>
-                <th className="w-1/4 text-left p-4">Name</th>
-                <th className="w-1/4 hidden sm:table-cell text-center p-4">Category</th>
-                <th className="w-1/4 hidden md:table-cell text-center p-4">Level</th>
-                <th className="w-1/4  text-center p-4">Options</th>
-              </tr>
-            </thead>
+                  <thead className="bg-gray-100 border-b border-gray-300 ">
+                    <tr>
+                      <th className="w-1/4 text-left p-4">Name</th>
+                      <th className="w-1/4 hidden sm:table-cell text-center p-4">Category</th>
+                      <th className="w-1/4 hidden md:table-cell text-center p-4">Level</th>
+                      <th className="w-1/4  text-center p-4">Options</th>
+                    </tr>
+                  </thead>
 
-            <tbody>
-              {skills.length > 0 && skills.map((skill) => (
-                <tr key={skill._id} className="hover:shadow-[0px_0px_5px_gray] rounded-md">
-                  <td className="p-4 text-lg font-semibold">{skill.name}</td>
-                  <td className="p-4 hidden sm:table-cell text-center">{skill.category}</td>
-                  <td className="p-4 hidden md:table-cell text-center">
-                    <h1>{skill.level}%</h1>
-                    <div className="w-full bg-gray-200 h-2 rounded">
-                      <div className="bg-blue-500 h-2 rounded" style={{ width: `${skill.level}%` }}></div>
-                    </div>
-                  </td>
+                  <tbody>
+                    {skills.map((skill) => (
+                      <tr key={skill._id} className="hover:shadow-[0px_0px_5px_gray] rounded-md">
+                        <td className="p-4 text-lg font-semibold">{skill.name}</td>
+                        <td className="p-4 hidden sm:table-cell text-center">{skill.category}</td>
+                        <td className="p-4 hidden md:table-cell text-center">
+                          <h1>{skill.level}%</h1>
+                          <div className="w-full bg-gray-200 h-2 rounded">
+                            <div className="bg-blue-500 h-2 rounded" style={{ width: `${skill.level}%` }}></div>
+                          </div>
+                        </td>
 
-                  <td className="p-4 flex justify-center items-center space-x-2">
-                    <Link to={`/dashboard/edit-skill/${skill._id}`} className="flex gap-1 items-center cursor-pointer bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded">
-                      <RiFileEditLine /> <span className="hidden sm:inline">Edit</span>
-                    </Link>
+                        <td className="p-4 flex justify-center items-center space-x-2">
+                          <Link to={`/dashboard/edit-skill/${skill._id}`} className="flex gap-1 items-center cursor-pointer bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded">
+                            <RiFileEditLine /> <span className="hidden sm:inline">Edit</span>
+                          </Link>
 
-                    <button onClick={() => handleDelete(skill._id)} className="flex gap-1 items-center cursor-pointer bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded">
-                      <RiDeleteBinLine /> <span className="hidden sm:inline">Delete</span>
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+                          <button onClick={() => handleDelete(skill._id)} className="flex gap-1 items-center cursor-pointer bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded">
+                            <RiDeleteBinLine /> <span className="hidden sm:inline">Delete</span>
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
 
-          </table>
+                </table>) : (
+                <h1 className='text-center text-taupe-500 italic text-lg font-semibold p-4'>No skills found. Please add some skills.</h1>
+              )}
+            </div>)}
         </div>
       </div>
       <ToastContainer />

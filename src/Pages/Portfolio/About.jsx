@@ -1,6 +1,18 @@
 import React from 'react'
 
 function About({ profile }) {
+
+   const Skeleton = () => {
+        return (
+            <div className="space-y-4 mt-10">
+                <div className="h-2 w-full rounded animate-pulse bg-gray-500 [animation-delay:0ms]"></div>
+                <div className="h-2 w-full rounded animate-pulse bg-gray-500 [animation-delay:200ms]"></div>
+                <div className="h-2 w-2/3 rounded animate-pulse bg-gray-500 [animation-delay:400ms]"></div>
+                <div className="h-2 w-1/2 rounded animate-pulse bg-gray-500 [animation-delay:600ms]"></div>
+            </div>
+        );
+    };
+
   return (
     <>
 
@@ -14,7 +26,11 @@ function About({ profile }) {
           </div>
           <div className='md:w-1/2 p-4'>
             <h1 className='text-white text-xl mb-8'>MERN Stack <span className='text-red-500'>Developer</span></h1>
-            <p className='text-gray-100'>{profile[0]?.about}</p>
+            {profile[0]?.about ? (
+                <p className='text-gray-100'>{profile[0]?.about}</p>
+            ) : (
+                <Skeleton />
+            )}
           </div>
         </div>
       </div>

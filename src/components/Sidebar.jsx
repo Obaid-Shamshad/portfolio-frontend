@@ -32,14 +32,29 @@ function Sidebar({ isOpenSidebar, setIsOpenSidebar }) {
 
     }
 
+    const Skeleton = () => {
+        return (
+            <div className="flex items-center gap-2">
+               <div className='w-10 h-10 flex justify-center items-center'>
+                 <div className="h-10 w-10 rounded-full animate-pulse bg-gray-300 [animation-delay:0ms]"></div>
+               </div>
+                <div className="w-full space-y-2">
+                    <div className="h-2 w-1/2 rounded animate-pulse bg-gray-300 [animation-delay:200ms]"></div>
+                    <div className="h-2 w-3/4 rounded animate-pulse bg-gray-300 [animation-delay:400ms]"></div>
+                </div>
+                
+            </div>
+        );
+    };
+
     return (
         <>
             <div className={`fixed top-14 lg:left-0 ${isOpenSidebar ? 'left-0' : '-left-72'} w-64 h-full bg-gray-100 text-gray-800 shadow-lg  shadow-gray-800 z-40 transition-all duration-300`}>
                 <ul className='py-4'>
-                    {profileData && profileData.length > 0 && <div>
+                      <div>
                         <li className='px-4 py-5 mb-2 '>
                             <div>
-                                {profileData && (
+                                {profileData && profileData.length > 0 ? (
                                     <div className='flex items-center gap-3'>
                                         <img src={profileData[0]?.profilePicture} alt="Profile" className='w-10 h-10 rounded-full' />
                                         <div>
@@ -47,12 +62,14 @@ function Sidebar({ isOpenSidebar, setIsOpenSidebar }) {
                                             <p className='text-sm text-gray-600'>MERN Stack Developer</p>
                                         </div>
                                     </div>
+                                ) : (
+                                    <Skeleton />
                                 )}
                             </div>
                         </li>
                         <div className="flex justify-center">
                             <hr className='mb-12 text-gray-400 w-[80%]' />
-                        </div></div>}
+                        </div></div>
                     <Link to="/dashboard" className='px-4 py-3 hover:bg-gray-200 cursor-pointer flex gap-2 items-center' onClick={toggleSidebar}><MdSpaceDashboard className='text-blue-700' />Dashboard</Link>
                     <Link to="/dashboard/skills" className='px-4 py-2 hover:bg-gray-200 cursor-pointer flex gap-2 items-center' onClick={toggleSidebar}>
                         <GiSkills className='text-pink-700' />Skills

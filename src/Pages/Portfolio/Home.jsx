@@ -3,6 +3,16 @@ import { FiDownload } from "react-icons/fi";
 
 function Home({ profile }) {
 
+    const Skeleton = () => {
+        return (
+            <div className="space-y-4 mt-10">
+                <div className="h-2 w-full rounded animate-pulse bg-gray-500 [animation-delay:0ms]"></div>
+                <div className="h-2 w-full rounded animate-pulse bg-gray-500 [animation-delay:200ms]"></div>
+                <div className="h-2 w-1/2 rounded animate-pulse bg-gray-500 [animation-delay:400ms]"></div>
+            </div>
+        );
+    };
+
     const url = profile[0]?.cvURL;
     const downloadUrl = url?.replace('/upload/', '/upload/fl_attachment/');
 
@@ -15,7 +25,11 @@ function Home({ profile }) {
                     <div className='w-fit mt-4'>
                         <p className='text-xl sm:text-3xl typing text-gray-300 inline-block'><span className='text-3xl bg-linear-to-r from-red-600 to-blue-600 bg-clip-text text-transparent'>MERN </span>Stack Developer</p>
                     </div>
-                    <p className='mt-10 text-white'>{profile[0]?.bio}</p>
+                    {profile[0]?.bio ? (
+                        <p className='mt-10 text-white'>{profile[0]?.bio}</p>
+                    ) : (
+                        <Skeleton />
+                    )}
                     <a href={downloadUrl} download className='flex w-fit items-center p-2 bg-fuchsia-700 text-white font-semibold mt-6 rounded-sm cursor-pointer hover:bg-fuchsia-800 transition-all duration-150 active:bg-purple-900' title='cv'>Download CV <FiDownload className='text-xl text-fuchsia-300' /></a>
                 </div>
                 <div className='md:w-1/3 mt-20 md:mt-0 m-4 order-1 lg:flex lg:justify-center'>
