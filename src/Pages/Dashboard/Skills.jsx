@@ -15,10 +15,10 @@ function Skills() {
       try {
         const response = await getSkills();
         setSkills(response.data.skills);
-        loading(false);
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching skills:', error);
-        loading(false);
+        setLoading(false);
       }
     };
 
@@ -68,12 +68,15 @@ function Skills() {
           <h1 className='text-2xl font-bold text-center p-4 border-b-2 border-gray-300 mb-2'>My Skills</h1>
           <Link to="/dashboard/add-skill" className="ml-4 mb-4 font-bold inline-block cursor-pointer bg-blue-500 hover:bg-blue-600 text-white rounded-md p-2 px-4">Add +</Link>
           {loading ? (
-            <Skeleton />
+            <div className="space-y-4">
+              <Skeleton />
+              <Skeleton />
+              <Skeleton />
+            </div>
           ) : (
             <div>
               {skills.length > 0 ? (
                 <table className="w-full table-fixed border-collapse">
-
                   <thead className="bg-gray-100 border-b border-gray-300 ">
                     <tr>
                       <th className="w-1/4 text-left p-4">Name</th>
@@ -107,7 +110,6 @@ function Skills() {
                       </tr>
                     ))}
                   </tbody>
-
                 </table>) : (
                 <h1 className='text-center text-taupe-500 italic text-lg font-semibold p-4'>No skills found. Please add some skills.</h1>
               )}
