@@ -59,7 +59,7 @@ function Updateprofile() {
 
   return (
     <>
-      <div className="lg:ml-64 mt-20 flex justify-center">
+      <div className="lg:ml-64 mt-20 flex 2xl:mt-0 2xl:items-center 2xl:min-h-screen justify-center">
         <form onSubmit={handleSubmit} className='flex flex-col gap-3 w-100 p-2  shadow-[0_0_5px_gray] rounded-lg'>
           <h1 className="text-xl font-bold text-center m-4">Update Profile</h1>
           <div className='flex flex-col gap-2'>
