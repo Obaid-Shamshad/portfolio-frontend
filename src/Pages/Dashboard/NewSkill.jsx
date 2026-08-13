@@ -54,7 +54,7 @@ function NewSkill() {
                         <label htmlFor="level">Level</label>
                         <input type="number" name="level" id="level" min="0" max="100" value={skillData.level} onChange={(e) => setSkillData({ ...skillData, level: parseInt(e.target.value) })} required className='border border-gray-400 p-1 px-2 rounded-md focus:shadow-[0_0_3px_blue] outline-none' />
                     </div>
-                    <button type="submit" className='mt-6 bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 text-white text-xl font-semibold'>Add</button>
+                    <button type="submit" className='mt-6 bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 text-white text-xl active:bg-blue-900 font-semibold'>Add</button>
                 </form>
             </div>
             <ToastContainer />

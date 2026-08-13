@@ -39,7 +39,7 @@ function Contact({ profile }) {
 
     return (
         <>
-            <div className='min-h-screen xl:min-h-auto xl:py-12 bg-gray-700' id="contact">
+            <div className='min-h-screen 2xl:min-h-auto 2xl:py-12 bg-gray-700' id="contact">
                 <div className='w-full h-52 flex justify-center items-center'>
                     <h1 className='text-3xl font-bold text-gray-200 text-shadow-lg text-shadow-black border-b-2 border-fuchsia-700 py-8 w-3/4 text-center'>Contact <span className='text-fuchsia-500'>me</span></h1>
                 </div>

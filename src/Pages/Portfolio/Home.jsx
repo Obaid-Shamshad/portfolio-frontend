@@ -18,7 +18,7 @@ function Home({ profile }) {
 
     return (
         <>
-            <div className='flex min-h-screen xl:min-h-auto xl:py-16 flex-col md:flex-row md:items-center justify-around  bg-gray-700' id="home">
+            <div className='flex min-h-screen 2xl:min-h-auto 2xl:py-16 flex-col md:flex-row md:items-center justify-around bg-gray-700' id="home">
                 <div className='md:w-1/2 order-2 md:order-1 m-4 '>
                     <h1 className='text-3xl text-gray-300'>Hi,</h1>
                     <p className='text-3xl text-gray-300'>I am <span className='text-3xl font-semibold text-fuchsia-600'>Obaid Ur Rehman</span></p>

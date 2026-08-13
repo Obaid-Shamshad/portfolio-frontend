@@ -64,7 +64,7 @@ function UploadCV() {
             <div className="flex justify-center items-center w-full ">
               <label
                 htmlFor="file"
-                className=' p-2 px-6 bg-gray-100 text-black text-2xl font-bolder shadow-[0_2px_4px_rgba(0,0,0,0.1)] rounded-lg cursor-pointer hover:bg-gray-200 transition-all' >
+                className=' p-2 px-6 bg-gray-100 text-black text-2xl font-bolder shadow-[0_2px_4px_rgba(0,0,0,0.1)] rounded-lg cursor-pointer hover:bg-gray-200 active:bg-gray-300 transition-all' >
                 +
               </label>
               <span id="fileName" className="text-gray-600"></span>
@@ -81,7 +81,7 @@ function UploadCV() {
               />
 
             </div>
-            <button type="submit" className='mt-4 bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 text-white text-xl font-semibold'>Upload</button>
+            <button type="submit" className='mt-4 bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 active:bg-blue-900 text-white text-xl font-semibold'>Upload</button>
           </form>
         </div>
       </div>

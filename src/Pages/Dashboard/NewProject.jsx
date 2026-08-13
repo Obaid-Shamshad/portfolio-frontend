@@ -78,7 +78,7 @@ function NewProject() {
               <label
                 htmlFor="file"
                 className="px-4 py-2 bg-purple-500 text-white rounded-lg 
-    cursor-pointer hover:bg-purple-600 transition"
+    cursor-pointer hover:bg-purple-600 active:bg-purple-700 transition"
               >
                 Choose File
               </label>
@@ -101,7 +101,7 @@ function NewProject() {
 
             </div>
           </div>
-          <button type="submit" className='bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 text-white text-xl font-semibold'>Add</button>
+          <button type="submit" className='bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 active:bg-blue-900 text-white text-xl font-semibold'>Add</button>
         </form>
       </div>
       <ToastContainer />

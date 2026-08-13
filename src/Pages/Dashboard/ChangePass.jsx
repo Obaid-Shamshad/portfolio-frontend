@@ -50,7 +50,7 @@ function ChangePass() {
             <label htmlFor="confirmPassword">Confirm New Password</label>
             <input type="password" name="confirmPassword" id="confirmPassword" value={formData.confirmPassword} onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })} required className='border border-gray-400  p-1 px-2 rounded-md focus:shadow-[0_0_3px_blue] outline-none' autoComplete='off' />
           </div>
-          <button type='submit' className='mt-6 bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 text-white text-xl font-semibold'>Change Password</button>
+          <button type='submit' className='mt-6 bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 active:bg-blue-900 text-white text-xl font-semibold'>Change Password</button>
         </form>
       </div>
       <ToastContainer />

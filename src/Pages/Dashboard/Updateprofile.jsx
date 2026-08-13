@@ -80,7 +80,7 @@ function Updateprofile() {
               <label
                 htmlFor="file"
                 className="px-4 py-2 bg-purple-500 text-white rounded-lg 
-    cursor-pointer hover:bg-purple-600 transition"
+    cursor-pointer hover:bg-purple-600 active:bg-purple-700 transition"
               >
                 Choose File
               </label>
@@ -101,7 +101,7 @@ function Updateprofile() {
 
             </div>
           </div>
-          <button type="submit" className='mt-4 bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 text-white text-xl font-semibold'>Update</button>
+          <button type="submit" className='mt-4 bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 active:bg-blue-900 text-white text-xl font-semibold'>Update</button>
         </form>
       </div>
       <ToastContainer />

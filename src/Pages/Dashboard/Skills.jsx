@@ -66,7 +66,7 @@ function Skills() {
       <div className='lg:ml-64 p-1 sm:p-4'>
         <div className="w-full mt-20 p-2 bg-gray-50 border rounded-lg border-gray-200">
           <h1 className='text-2xl font-bold text-center p-4 border-b-2 border-gray-300 mb-2'>My Skills</h1>
-          <Link to="/dashboard/add-skill" className="ml-4 mb-4 font-bold inline-block cursor-pointer bg-blue-500 hover:bg-blue-600 text-white rounded-md p-2 px-4">Add +</Link>
+          <Link to="/dashboard/add-skill" className="ml-4 mb-4 font-bold inline-block cursor-pointer bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white rounded-md p-2 px-4">Add +</Link>
           {loading ? (
             <div className="space-y-4">
               <Skeleton />
@@ -99,11 +99,11 @@ function Skills() {
                         </td>
 
                         <td className="p-4 flex justify-center items-center space-x-2">
-                          <Link to={`/dashboard/edit-skill/${skill._id}`} className="flex gap-1 items-center cursor-pointer bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded">
+                          <Link to={`/dashboard/edit-skill/${skill._id}`} className="flex gap-1 items-center cursor-pointer bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white px-3 py-2 rounded">
                             <RiFileEditLine /> <span className="hidden sm:inline">Edit</span>
                           </Link>
 
-                          <button onClick={() => handleDelete(skill._id)} className="flex gap-1 items-center cursor-pointer bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded">
+                          <button onClick={() => handleDelete(skill._id)} className="flex gap-1 items-center cursor-pointer bg-red-500 hover:bg-red-600 active:bg-red-700 text-white px-3 py-2 rounded">
                             <RiDeleteBinLine /> <span className="hidden sm:inline">Delete</span>
                           </button>
                         </td>

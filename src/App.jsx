@@ -40,8 +40,9 @@ function App() {
       <Routes>
         
         <Route path="/*" element={<PortfolioRoutes setIsLoggedIn={setIsLoggedIn}/>} />
-        <Route path="/dashboard/*" element={isLoggedIn ? <DashboardRoutes setIsLoggedIn={setIsLoggedIn}/> : <Notfound />} />
-
+        {/* <Route path="/dashboard/*" element={isLoggedIn ? <DashboardRoutes setIsLoggedIn={setIsLoggedIn}/> : <Notfound />} /> */}
+        <Route path="/dashboard/*" element={<DashboardRoutes setIsLoggedIn={setIsLoggedIn}/>} />
+       
       </Routes>
     </BrowserRouter>
   )

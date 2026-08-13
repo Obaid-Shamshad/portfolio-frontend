@@ -16,7 +16,7 @@ function About({ profile }) {
   return (
     <>
 
-      <div className="min-h-screen xl:min-h-auto xl:py-12 flex flex-col bg-gray-700" id="about">
+      <div className="min-h-screen 2xl:min-h-auto 2xl:py-12 flex flex-col bg-gray-700" id="about">
         <div className='w-full h-60 flex justify-center items-center'>
           <h1 className='text-3xl font-bold text-gray-200 text-shadow-lg text-shadow-black border-b-2 border-gray-500 py-8 w-3/4 text-center'>About <span className='text-red-500'>me</span></h1>
         </div>

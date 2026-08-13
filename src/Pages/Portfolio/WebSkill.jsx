@@ -23,7 +23,7 @@ function WebSkill() {
     return (
         <>
             {skillType.length > 0 && (
-                <div className="min-h-screen xl:min-h-auto xl:py-12 flex flex-col bg-gray-700" id="skills">
+                <div className="min-h-screen 2xl:min-h-auto 2xl:py-12 flex flex-col bg-gray-700" id="skills">
                     <div className='h-60 w-full flex justify-center items-center'>
                         <h1 className='text-3xl font-bold text-white text-shadow-lg text-shadow-black border-b-2 border-gray-500 w-3/4 text-center py-8'><span className='text-red-500'>My</span> Skills</h1>
                     </div>
