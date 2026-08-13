@@ -22,7 +22,10 @@ function About({ profile }) {
         </div>
         <div className='flex flex-col md:flex-row md:justify-around md:items-center'>
           <div className='md:w-1/3 flex justify-center items-center md:border-r-2 md:border-red-800 p-4'>
-            <img src={profile[0]?.profilePicture || "./B6B.jpg"} alt="Profile" className='w-62 aspect-3.5/4 object-cover rounded-full border-2 border-red-700 shadow-[0_0_50px_red]' />
+            {profile[0]?.profilePicture ? (
+            <img src={profile[0]?.profilePicture || "./B6B.jpg"} alt="Profile" className='w-62 aspect-3.5/4 object-cover rounded-full bg-gray-500 border-2 border-red-700 shadow-[0_0_50px_red]' />) : (
+               <div className='bg-gray-500 animate-pulse w-62 aspect-3.5/4 object-cover rounded-full'></div>
+              )}
           </div>
           <div className='md:w-1/2 p-4'>
             <h1 className='text-white text-xl mb-8'>MERN Stack <span className='text-red-500'>Developer</span></h1>

@@ -32,10 +32,12 @@ function Home({ profile }) {
                     )}
                     <a href={downloadUrl} download className='flex w-fit items-center p-2 bg-fuchsia-700 text-white font-semibold mt-6 rounded-sm cursor-pointer hover:bg-fuchsia-800 md:transition-all md:duration-150 active:bg-purple-900' title='cv'>Download CV <FiDownload className='text-xl text-fuchsia-300' /></a>
                 </div>
-                <div className='md:w-1/3 mt-20 md:mt-0 m-4 order-1 lg:flex lg:justify-center'>
-                    <div className='max-w-62 z-10  rounded-full bg-amber-600 relative profilePic '>
-                        <img src={profile[0]?.profilePicture || "./B6B.jpg"} alt="Profile" className='w-full aspect-3.5/4 bg-gray-300 rounded-full object-cover' />
-                    </div>
+                <div className='md:w-1/3 mt-20 md:mt-0 m-4 order-1 flex lg:justify-center'>
+                    {profile[0]?.profilePicture ? (<div className='max-w-62 z-10  rounded-full relative profilePic '>
+                        <img src={profile[0]?.profilePicture || "./B6B.jpg"} alt="Profile" className='w-full aspect-3.5/4 bg-gray-500 rounded-full object-cover' />
+                    </div>) : (
+                        <div className='bg-gray-500 w-62 animate-pulse aspect-3.5/4 object-cover rounded-full'></div>
+                    )}
                 </div>
             </div>
         </>
