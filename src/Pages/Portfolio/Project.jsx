@@ -21,7 +21,7 @@ function Project() {
   return (
     <>
       {projects.length > 0 && (
-        <div className='flex flex-col bg-gray-700' id="projects">
+        <div className='flex min-h-screen xl:py-12 xl:min-h-auto flex-col bg-gray-700' id="projects">
           <div className='h-60 w-full flex justify-center items-center'>
             <h1 className='text-3xl font-bold text-white text-shadow-lg text-shadow-black border-b-2 border-gray-500 w-3/4 text-center py-8'>My <span className='text-red-500'> Projects</span></h1>
           </div>

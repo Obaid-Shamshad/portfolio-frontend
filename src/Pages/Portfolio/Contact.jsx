@@ -39,7 +39,7 @@ function Contact({ profile }) {
 
     return (
         <>
-            <div className='min-h-screen bg-gray-700' id="contact">
+            <div className='min-h-screen xl:min-h-auto xl:py-12 bg-gray-700' id="contact">
                 <div className='w-full h-52 flex justify-center items-center'>
                     <h1 className='text-3xl font-bold text-gray-200 text-shadow-lg text-shadow-black border-b-2 border-fuchsia-700 py-8 w-3/4 text-center'>Contact <span className='text-fuchsia-500'>me</span></h1>
                 </div>
@@ -49,7 +49,7 @@ function Contact({ profile }) {
                         <p className='text-gray-300 mb-4'>Feel free to reach out to me for any inquiries, collaborations, or just to say hello! I'm always open to connecting with new people and discussing exciting opportunities.</p>
                         <p className='text-gray-300 mb-4'>You can contact me via email at <a href='https://mail.google.com/mail/?view=cm&to=obaidshamshad5656@gmail.com' target='_blank' rel='noopener noreferrer' className='text-fuchsia-500 hover:text-fuchsia-400'>obaidshamshad5656@gmail.com</a></p>
                         <p className='text-gray-300 mb-4'><span className='text-fuchsia-500'>Phone:</span> +1 (234) 567-890</p>
-                        <a href={downloadUrl} download className='flex items-center w-fit p-2 bg-fuchsia-700 text-white font-semibold mt-6 rounded-sm cursor-pointer hover:bg-fuchsia-800 transition-all duration-150 active:bg-purple-900'>Download CV <FiDownload className='text-xl text-fuchsia-300' /></a>
+                        <a href={downloadUrl} download className='flex items-center w-fit p-2 bg-fuchsia-700 text-white font-semibold mt-6 rounded-sm cursor-pointer hover:bg-fuchsia-800 md:transition-all md:duration-150 active:bg-purple-900'>Download CV <FiDownload className='text-xl text-fuchsia-300' /></a>
 
 
                     </div>
@@ -67,7 +67,7 @@ function Contact({ profile }) {
                                 <label htmlFor="message" className='font-medium'>Message</label>
                                 <textarea id="message" name="message" placeholder='Enter your message' className='border border-gray-400 p-1 px-2 rounded-md outline-none focus:border-fuchsia-600 focus:shadow-[0_0_5px_fuchsia] h-28' value={formData.message} onChange={handleChange} required></textarea>
                             </div>
-                            <button type="submit" className='bg-fuchsia-800 cursor-pointer font-medium text-xl text-white py-2 px-4 rounded-md hover:bg-fuchsia-900 focus:shadow focus:shadow-fuchsia-600'>Send Message</button>
+                            <button type="submit" className='bg-fuchsia-700 cursor-pointer font-medium text-xl text-white py-2 px-4 rounded-md hover:bg-fuchsia-800  active:bg-fuchsia-900'>Send Message</button>
 
                         </form>
                     </div>

@@ -18,7 +18,7 @@ function Home({ profile }) {
 
     return (
         <>
-            <div className='flex min-h-screen flex-col md:flex-row md:items-center justify-around  bg-gray-700' id="home">
+            <div className='flex min-h-screen xl:min-h-auto xl:py-16 flex-col md:flex-row md:items-center justify-around  bg-gray-700' id="home">
                 <div className='md:w-1/2 order-2 md:order-1 m-4 '>
                     <h1 className='text-3xl text-gray-300'>Hi,</h1>
                     <p className='text-3xl text-gray-300'>I am <span className='text-3xl font-semibold text-fuchsia-600'>Obaid Ur Rehman</span></p>
@@ -30,7 +30,7 @@ function Home({ profile }) {
                     ) : (
                         <Skeleton />
                     )}
-                    <a href={downloadUrl} download className='flex w-fit items-center p-2 bg-fuchsia-700 text-white font-semibold mt-6 rounded-sm cursor-pointer hover:bg-fuchsia-800 transition-all duration-150 active:bg-purple-900' title='cv'>Download CV <FiDownload className='text-xl text-fuchsia-300' /></a>
+                    <a href={downloadUrl} download className='flex w-fit items-center p-2 bg-fuchsia-700 text-white font-semibold mt-6 rounded-sm cursor-pointer hover:bg-fuchsia-800 md:transition-all md:duration-150 active:bg-purple-900' title='cv'>Download CV <FiDownload className='text-xl text-fuchsia-300' /></a>
                 </div>
                 <div className='md:w-1/3 mt-20 md:mt-0 m-4 order-1 lg:flex lg:justify-center'>
                     <div className='max-w-62 z-10  rounded-full bg-amber-600 relative profilePic '>
