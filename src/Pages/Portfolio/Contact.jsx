@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FiDownload } from "react-icons/fi";
 import { sendMessage } from '../../api/contactAPI';
 import { ToastContainer, toast } from 'react-toastify';
+import Spinner from "../../components/Spinner";
 
 
 function Contact({ profile }) {
@@ -10,6 +11,7 @@ function Contact({ profile }) {
         email: '',
         message: ''
     });
+    const [submitting, setsubmitting] = useState(false);
 
     const url = profile[0]?.cvURL;
     const downloadUrl = url?.replace('/upload/', '/upload/fl_attachment/');
@@ -25,7 +27,9 @@ function Contact({ profile }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            setsubmitting(true);
             const response = await sendMessage(formData);
+            setsubmitting(false);
             if (response.status === 200) {
                 toast.success('Message sent successfully!');
                 setFormData({ name: '', email: '', message: '' });
@@ -34,6 +38,7 @@ function Contact({ profile }) {
             }
         } catch (error) {
             toast.error('Failed to send message. Please try again later.');
+            setsubmitting(false);
         }
     };
 
@@ -67,7 +72,9 @@ function Contact({ profile }) {
                                 <label htmlFor="message" className='font-medium'>Message</label>
                                 <textarea id="message" name="message" placeholder='Enter your message' className='border border-gray-400 p-1 px-2 rounded-md outline-none focus:border-fuchsia-600 focus:shadow-[0_0_5px_fuchsia] h-28' value={formData.message} onChange={handleChange} required></textarea>
                             </div>
-                            <button type="submit" className='bg-fuchsia-700 cursor-pointer font-medium text-xl text-white py-2 px-4 rounded-md hover:bg-fuchsia-800  active:bg-fuchsia-900'>Send Message</button>
+                            {submitting ? <div className='mt-6 w-full border border-gray-300 cursor-not-allowed p-2 rounded-md font-semibold'>
+                                <Spinner />
+                            </div> : <button type='submit' className='mt-6 bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 active:bg-blue-900 text-white text-xl font-semibold'>Change Password</button>}
 
                         </form>
                     </div>

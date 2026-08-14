@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import { RiDeleteBinLine, RiFileEditLine } from "react-icons/ri";
 import { getProjects, deleteProject } from '../../api/projectApi';
 import { ToastContainer, toast } from 'react-toastify';
+import Model from '../../components/Model';
 
 
 function Projects() {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isOpenModel, setIsOpenModel] = useState(false);
 
     useEffect(() => {
         const fetchProjects = async () => {
@@ -98,9 +100,11 @@ function Projects() {
                                                         <Link to={`/dashboard/edit-project/${project._id}`} className="flex gap-1 items-center bg-blue-500 cursor-pointer text-white px-3 py-2 rounded hover:bg-blue-600 active:bg-blue-700">
                                                             <RiFileEditLine /> <span className="hidden sm:inline">Edit</span>
                                                         </Link>
-                                                        <button onClick={() => handleDeleteProject(project._id)} className="flex gap-1 items-center bg-red-500 text-white px-3 py-2 cursor-pointer rounded hover:bg-red-600 active:bg-red-700">
+                                                        <button onClick={setIsOpenModel(true)} className="flex gap-1 items-center bg-red-500 text-white px-3 py-2 cursor-pointer rounded hover:bg-red-600 active:bg-red-700">
                                                             <RiDeleteBinLine /> <span className="hidden sm:inline">Delete</span>
                                                         </button>
+                                                        {isOpenModel && <div className='flex justify-center items-center'>  <Model setIsOpenModel={setIsOpenModel} deleteData={() => handleDeleteProject(project._id)} /></div> 
+                                                      }
                                                     </div>
                                                 </td>
                                             </tr>

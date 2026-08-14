@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { getProfile, updateProfile } from '../../api/profileAPI';
 import { ToastContainer, toast } from 'react-toastify';
+import Spinner from '../../components/Spinner';
 
 
 function Updateprofile() {
@@ -10,20 +11,29 @@ function Updateprofile() {
     about: '',
     profilePicture: null
   });
+  const [loading, setLoading] = useState(false);
+  const [submitting, setsubmitting] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     const fetchProfileData = async () => {
-      const response = await getProfile();
-      if (response.data.success) {
-        setProfileData({
-          name: response.data.profile[0].name || '',
-          bio: response.data.profile[0].bio || '',
-          about: response.data.profile[0].about || '',
-          profilePicture: null
-        });
-        document.getElementById('fileName').innerText = response.data.profile[0].profilePicture ? response.data.profile[0].profilePicture.split('/').pop() : 'No file selected';
-      }
-    };
+      try {
+        const response = await getProfile();
+        setLoading(false);
+        if (response.data.success) {
+          setProfileData({
+            name: response.data.profile[0].name || '',
+            bio: response.data.profile[0].bio || '',
+            about: response.data.profile[0].about || '',
+            profilePicture: null
+          });
+          document.getElementById('fileName').innerText = response.data.profile[0].profilePicture ? response.data.profile[0].profilePicture.split('/').pop() : 'No file selected';
+        }
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      };
+    }
     fetchProfileData();
   }, []);
 
@@ -46,7 +56,9 @@ function Updateprofile() {
     }
 
     try {
+      setsubmitting(true);
       const response = await updateProfile(formDataToSend);
+      setsubmitting(false);
       if (response.data.success) {
         toast.success('Profile updated successfully!');
       } else {
@@ -54,12 +66,13 @@ function Updateprofile() {
       }
     } catch (error) {
       toast.error('An error occurred while updating the profile.');
+      setsubmitting(false);
     }
   };
 
   return (
     <>
-      <div className="lg:ml-64 mt-20 flex 2xl:mt-0 2xl:items-center 2xl:min-h-screen justify-center">
+      <div className="lg:ml-64 mt-20 flex 2xl:mt-0 2xl:items-center 2xl:min-h-screen justify-center relative">
         <form onSubmit={handleSubmit} className='flex flex-col gap-3 w-100 p-2  shadow-[0_0_5px_gray] rounded-lg'>
           <h1 className="text-xl font-bold text-center m-4">Update Profile</h1>
           <div className='flex flex-col gap-2'>
@@ -101,11 +114,15 @@ function Updateprofile() {
 
             </div>
           </div>
-          <button type="submit" className='mt-4 bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 active:bg-blue-900 text-white text-xl font-semibold'>Update</button>
+          {submitting ? <div className='mt-6 w-full border border-gray-300 cursor-not-allowed p-2 rounded-md font-semibold'>
+            <Spinner />
+          </div> : <button type='submit' className='mt-6 bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 active:bg-blue-900 text-white text-xl font-semibold'>Change Password</button>}
         </form>
+        {loading && <div className='h-screen fixed lg:ml-64 lg:mr-64 w-full top-0 flex justify-center bg-black/50 items-center'>
+          <Spinner />
+        </div>}
       </div>
       <ToastContainer />
-
     </>
   )
 }

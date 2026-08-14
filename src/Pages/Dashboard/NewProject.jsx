@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { addProject } from '../../api/projectApi';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import Spinner from '../../components/Spinner';
 
 function NewProject() {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ function NewProject() {
     githubLink: '',
     projectImage: null
   });
+  const [submitting, setsubmitting] = useState(false);
 
   const navigate = useNavigate();
 
@@ -25,13 +27,16 @@ function NewProject() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formDataToSend = new FormData();
+   try {
+     const formDataToSend = new FormData();
     formDataToSend.append('title', formData.title);
     formDataToSend.append('description', formData.description);
     formDataToSend.append('liveLink', formData.liveLink);
     formDataToSend.append('githubLink', formData.githubLink);
     formDataToSend.append('projectImage', formData.projectImage);
+    setsubmitting(true);
     const response = await addProject(formDataToSend);
+    setsubmitting(false);
     if (response.data.success) {
       toast.success(response.data.message);
       setFormData({
@@ -48,6 +53,10 @@ function NewProject() {
     } else {
       toast.error(response.data.message);
     }
+   } catch (error) {
+     toast.error("failed to add project");
+     setsubmitting(false);
+   }
   }
 
 
@@ -101,7 +110,9 @@ function NewProject() {
 
             </div>
           </div>
-          <button type="submit" className='bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 active:bg-blue-900 text-white text-xl font-semibold'>Add</button>
+          {submitting ? <div className='mt-6 w-full border border-gray-300 cursor-not-allowed p-2 rounded-md font-semibold'>
+            <Spinner />
+          </div> : <button type='submit' className='mt-6 bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 active:bg-blue-900 text-white text-xl font-semibold'>Change Password</button>}
         </form>
       </div>
       <ToastContainer />

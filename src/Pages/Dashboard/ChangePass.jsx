@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FaHandHolding } from 'react-icons/fa';
 import { changePassword } from '../../api/passwordAPI';
 import { ToastContainer, toast } from 'react-toastify';
+import Spinner from '../../components/Spinner';
 
 
 function ChangePass() {
@@ -10,6 +11,7 @@ function ChangePass() {
     newPassword: '',
     confirmPassword: ''
   });
+  const [submitting, setsubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +20,9 @@ function ChangePass() {
       return;
     }
     try {
+      setsubmitting(true);
       const response = await changePassword(formData);
+      setsubmitting(false)
       if (response.data.success) {
         toast.success(response.data.message);
         setFormData({
@@ -31,6 +35,7 @@ function ChangePass() {
       }
     } catch (error) {
       toast.error('Failed to change password.');
+      setsubmitting(false);
     }
   }
   return (
@@ -50,7 +55,9 @@ function ChangePass() {
             <label htmlFor="confirmPassword">Confirm New Password</label>
             <input type="password" name="confirmPassword" id="confirmPassword" value={formData.confirmPassword} onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })} required className='border border-gray-400  p-1 px-2 rounded-md focus:shadow-[0_0_3px_blue] outline-none' autoComplete='off' />
           </div>
-          <button type='submit' className='mt-6 bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 active:bg-blue-900 text-white text-xl font-semibold'>Change Password</button>
+          {submitting ? <div className='mt-6 w-full border border-gray-300 cursor-not-allowed p-2 rounded-md font-semibold'>
+            <Spinner/>
+          </div> : <button type='submit' className='mt-6 bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 active:bg-blue-900 text-white text-xl font-semibold'>Change Password</button>}
         </form>
       </div>
       <ToastContainer />

@@ -4,11 +4,14 @@ import { getSkill, editSkill } from '../../api/skillApi';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import Spinner from '../../components/Spinner';
 
 
 function EditSkill() {
     const { skillId } = useParams();
     const [skillData, setSkillData] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [submitting, setsubmitting] = useState(false);
 
     const navigate = useNavigate();
 
@@ -16,10 +19,14 @@ function EditSkill() {
     useEffect(() => {
         const fetchSkill = async () => {
             try {
+                setLoading(true);
                 const response = await getSkill(skillId);
+                setLoading(false);
                 setSkillData(response.data.skill);
-            } catch (error) {
                 console.error('Error fetching skill:', error);
+            } catch (error) {
+                console.log(error);
+                setLoading(false);
             }
         };
 
@@ -38,7 +45,9 @@ function EditSkill() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            setsubmitting(true);
             const response = await editSkill(skillId, skillData);
+            setsubmitting(false);
             if (response.data.success) {
                 setSkillData(null);
                 navigate('/dashboard/skills');
@@ -47,6 +56,7 @@ function EditSkill() {
             }
         } catch (error) {
             toast.error('Failed to update skill');
+            setsubmitting(false);
         }
     };
 
@@ -68,8 +78,13 @@ function EditSkill() {
                         <label htmlFor="level">Level</label>
                         <input type="number" name="level" id="level" min="0" max="100" value={skillData?.level || ''} onChange={(e) => setSkillData({ ...skillData, level: e.target.value })} required className='border border-gray-400 p-1 px-2 rounded-md focus:shadow-[0_0_3px_blue] outline-none' />
                     </div>
-                    <button type="submit" className='mt-6 bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 active:bg-blue-900 text-white text-xl font-semibold'>Edit</button>
+                    {submitting ? <div className='mt-6 w-full border border-gray-300 cursor-not-allowed p-2 rounded-md font-semibold'>
+                        <Spinner />
+                    </div> : <button type='submit' className='mt-6 bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 active:bg-blue-900 text-white text-xl font-semibold'>Change Password</button>}
                 </form>
+                {loading && <div className='h-screen fixed lg:ml-64 lg:mr-64 w-full top-0 flex justify-center bg-black/50 items-center'>
+                    <Spinner />
+                </div>}
             </div>
             <ToastContainer />
 

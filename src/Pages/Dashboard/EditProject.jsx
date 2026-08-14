@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { editProject, getProject } from '../../api/projectApi';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import Spinner from '../../components/Spinner';
 
 
 function EditProject() {
   const { projectId } = useParams();
+  const [loading, setLoading] = useState(false);
+  const [submitting, setsubmitting] = useState(false);
   const [formData, setFormData] = useState({
     title: '',
     description: '',
@@ -17,11 +20,11 @@ function EditProject() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    setLoading(true);
     const fetchProjectData = async () => {
       try {
-
-
         const response = await getProject(projectId);
+        setLoading(false);
         if (response.data.success) {
           setFormData({
             title: response.data.project.title,
@@ -34,6 +37,7 @@ function EditProject() {
         }
       } catch (error) {
         console.error('Error fetching project:', error);
+        setLoading(false);
       }
     };
     fetchProjectData();
@@ -58,7 +62,9 @@ function EditProject() {
       if (formData.projectImage) {
         formDataToSend.append('projectImage', formData.projectImage);
       }
+      setsubmitting(true);
       const response = await editProject(projectId, formDataToSend);
+      setsubmitting(false);
       if (response.data.success) {
         navigate('/dashboard/projects');
       } else {
@@ -66,6 +72,7 @@ function EditProject() {
       }
     } catch (error) {
       toast.error('Error editing project');
+      setsubmitting(false);
     }
   }
 
@@ -119,8 +126,13 @@ function EditProject() {
 
             </div>
           </div>
-          <button type="submit" className='bg-blue-700 w-full cursor-pointer  p-2 rounded-md hover:bg-blue-800 active:bg-blue-900 text-white text-xl font-semibold'>Edit</button>
+          {submitting ? <div className='mt-6 w-full border border-gray-300 cursor-not-allowed p-2 rounded-md font-semibold'>
+            <Spinner />
+          </div> : <button type='submit' className='mt-6 bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 active:bg-blue-900 text-white text-xl font-semibold'>Change Password</button>}
         </form>
+        {loading && <div className='h-screen fixed lg:ml-64 lg:mr-64 w-full top-0 flex justify-center bg-black/50 items-center'>
+          <Spinner />
+        </div>}
       </div>
       <ToastContainer />
 
