@@ -11,7 +11,7 @@ function Login({ setIsLoggedIn }) {
     username: '',
     password: '',
   });
-  const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const navigate = useNavigate();
 
