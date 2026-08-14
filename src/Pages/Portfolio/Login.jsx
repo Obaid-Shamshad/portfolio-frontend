@@ -19,9 +19,9 @@ function Login({ setIsLoggedIn }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      setLoading(true)
+      setSubmitting(true)
       const response = await login(cradentials);
-      setLoading(false)
+      setSubmitting(false)
       if (response.data.success === true) {
         console.log("Login successful:", response.data);
         window.localStorage.setItem("userId", response.data.userId);
