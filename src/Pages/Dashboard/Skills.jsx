@@ -105,7 +105,7 @@ function Skills() {
                             <RiFileEditLine /> <span className="hidden sm:inline">Edit</span>
                           </Link>
 
-                          <button onClick={setIsOpenModel(true)} className="flex gap-1 items-center cursor-pointer bg-red-500 hover:bg-red-600 active:bg-red-700 text-white px-3 py-2 rounded">
+                          <button onClick={() => setIsOpenModel(true)} className="flex gap-1 items-center cursor-pointer bg-red-500 hover:bg-red-600 active:bg-red-700 text-white px-3 py-2 rounded">
                             <RiDeleteBinLine /> <span className="hidden sm:inline">Delete</span>
                           </button>
                            {isOpenModel && <div className='flex justify-center items-center'>  <Model setIsOpenModel={setIsOpenModel} deleteData={() => handleDeleteProject(skill._id)} /></div>}
