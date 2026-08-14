@@ -3,7 +3,7 @@ import React from 'react'
 function Model({ setIsOpenModel, deleteData }) {
   return (
    <>
-    <div className='h-screen fixed lg:left-64 right-0 lg:mr-64 top-0 flex justify-center bg-black/50 items-center'>
+    <div className='h-screen fixed lg:left-64 right-0 top-0 flex justify-center bg-black/50 items-center'>
       <div className='w-full flex flex-col gap-20 bg-gray-200 opacity-100 max-w-78 p-2 relative rounded-lg shadow-[0_0_20px_white]'>
         <h1>Are you sure you want to delete it, it will be deleted permenantly</h1>
        <div className="relative">
