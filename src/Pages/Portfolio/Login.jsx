@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
 import { login } from '../../api/userApi';
 import { ToastContainer, toast } from 'react-toastify';
+import Spinner from '../../components/Spinner';
 
 
 function Login({ setIsLoggedIn }) {
@@ -10,6 +11,7 @@ function Login({ setIsLoggedIn }) {
     username: '',
     password: '',
   });
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -17,8 +19,9 @@ function Login({ setIsLoggedIn }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
+      setLoading(true)
       const response = await login(cradentials);
-      console.log("Login response:", response.data);
+      setLoading(false)
       if (response.data.success === true) {
         console.log("Login successful:", response.data);
         window.localStorage.setItem("userId", response.data.userId);
@@ -30,6 +33,7 @@ function Login({ setIsLoggedIn }) {
       }
     } catch (error) {
       toast.error("Login failed. Please try again.");
+          setLoading(false)
     }
   }
 
@@ -44,7 +48,7 @@ function Login({ setIsLoggedIn }) {
           </div>
           <div className='mb-4 flex flex-col gap-1'>
             <label htmlFor="password" className='font-medium'>Password</label>
-            <input type="password" id="password" name="password" value={cradentials.password} onChange={(e) => setCredentials({ ...cradentials, password: e.target.value })} className='p-1 px-2 outline-none border rounded-md focus:shadow focus:border-blue-400 focus:shadow-blue-500 ' autoComplete='current-password' required />
+            <input type="password" id="passw          ord" name="password" value={cradentials.password} onChange={(e) => setCredentials({ ...cradentials, password: e.target.value })} className='p-1 px-2 outline-none border rounded-md focus:shadow focus:border-blue-400 focus:shadow-blue-500 ' autoComplete='current-password' required />
           </div>
           <div className="flex gap-3">
             <div className='flex items-center mb-4 gap-1'>
@@ -53,7 +57,9 @@ function Login({ setIsLoggedIn }) {
             </div>
             <Link to="/forgot-password" className='text-red-400 hover:underline'>Forgot-password</Link>
           </div>
-          <button type="submit" className='bg-blue-500 cursor-pointer text-white p-2 rounded-md w-full hover:bg-blue-600'>Login</button>
+    {submitting ? <div className='mt-6 w-full border border-gray-300 cursor-not-allowed p-2 rounded-md font-semibold'>
+              <Spinner />
+            </div> : <button type='submit' className='mt-6 bg-blue-700 w-full cursor-pointer p-2 rounded-md hover:bg-blue-800 active:bg-blue-900 text-white text-xl font-semibold'>Login</button>}
         </form>
       </div>
       <ToastContainer />
