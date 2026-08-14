@@ -4,7 +4,7 @@ function Model({ setIsOpenModel, deleteData }) {
   return (
    <>
     <div className='h-screen fixed lg:left-64 right-0 top-0 flex justify-center bg-black/50 items-center'>
-      <div className='w-full flex flex-col gap-20 bg-gray-200 opacity-100 max-w-78 p-2 relative rounded-lg shadow-[0_0_20px_white]'>
+      <div className='w-full flex flex-col jus gap-20 bg-gray-200 max-w-78 p-2 relative rounded-lg shadow-[0_0_20px_white]'>
         <h1>Are you sure you want to delete it, it will be deleted permenantly</h1>
        <div className="relative">
          <div className='flex  right-2 bottom-2 absolute justify-center items-center gap-2'>
