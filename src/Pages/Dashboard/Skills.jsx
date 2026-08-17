@@ -28,7 +28,6 @@ function Skills() {
   }, []);
 
   const handleDelete = async (skillId) => {
-    if (window.confirm('Are you sure you want to delete this skill?')) {
       try {
         const response = await deleteSkill(skillId);
         if (response.data.success) {
@@ -38,7 +37,6 @@ function Skills() {
       } catch (error) {
         toast.error('Error deleting skill');
       }
-    }
   };
 
   const Skeleton = () => {
