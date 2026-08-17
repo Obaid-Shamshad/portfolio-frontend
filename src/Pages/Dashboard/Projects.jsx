@@ -40,22 +40,14 @@ function Projects() {
 
     const Skeleton = () => {
         return (
-            <div className="flex items-center justify-between border border-gray-300 p-2 px-12">
-                <div className='w-2/6 animate-pulse flex items-center gap-4 [animation-delay:0ms]'>
-                    <div className="w-14">
-                        <div className="w-12 h-12 bg-gray-300"></div>
-                    </div>
-                    <div className='w-full animate-pulse space-y-2 [animation-delay:200ms]'>
-                        <div className="h-2 w-full  bg-gray-300"></div>
-                        <div className="h-2 w-1/2  bg-gray-300"></div>
-                    </div>
-                </div>
-                <div className="w-1/6 flex gap-1 items-center rounded animate-pulse [animation-delay:400ms]">
-                    <div className="h-10 w-full bg-gray-300"></div>
-                    <div className="h-10 w-full bg-gray-300"></div>
-                </div>
-
-            </div>
+             <div className="flex items-center justify-around p-2">
+        <div className='flex flex-col gap-1 w-full'>
+          <div className='h-10 animate-pulse bg-gray-300 [animation-delay:0ms]'></div>
+          <div className='h-10 animate-pulse bg-gray-300 [animation-delay:100ms]'></div>
+          <div className='h-10 animate-pulse bg-gray-300 [animation-delay:300ms]'></div>
+          <div className='h-10 animate-pulse bg-gray-300 [animation-delay:400ms]'></div>
+        </div>
+      </div>
         );
     };
 
@@ -67,8 +59,6 @@ function Projects() {
                     <Link to="/dashboard/add-project" className="ml-4 mb-4 font-bold inline-block bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white rounded-md p-2 px-4">Add +</Link>
                     {loading ? (
                         <div className="space-y-4">
-                            <Skeleton />
-                            <Skeleton />
                             <Skeleton />
                         </div>
                     ) : (

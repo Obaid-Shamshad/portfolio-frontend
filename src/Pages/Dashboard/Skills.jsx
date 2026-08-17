@@ -43,22 +43,13 @@ function Skills() {
 
   const Skeleton = () => {
     return (
-      <div className="flex items-center justify-around border border-gray-300 p-2">
-        <div className='w-1/6 animate-pulse space-y-2 [animation-delay:0ms]'>
-          <div className="h-2 w-full  bg-gray-300"></div>
-          <div className="h-2 w-full  bg-gray-300"></div>
-          <div className="h-2 w-full  bg-gray-300"></div>
+      <div className="flex items-center justify-around p-2">
+        <div className='flex flex-col gap-1 w-full'>
+          <div className='h-10 animate-pulse bg-gray-300 [animation-delay:0ms]'></div>
+          <div className='h-10 animate-pulse bg-gray-300 [animation-delay:100ms]'></div>
+          <div className='h-10 animate-pulse bg-gray-300 [animation-delay:300ms]'></div>
+          <div className='h-10 animate-pulse bg-gray-300 [animation-delay:400ms]'></div>
         </div>
-        <div className="w-2/6 space-y-2 rounded animate-pulse [animation-delay:200ms]">
-          <div className="h-2 w-full  bg-gray-300"></div>
-          <div className="h-2 w-full  bg-gray-300"></div>
-          <div className="h-2 w-full  bg-gray-300"></div>
-        </div>
-        <div className="w-1/6 flex gap-1 items-center rounded animate-pulse [animation-delay:400ms]">
-          <div className="h-10 w-full bg-gray-300"></div>
-          <div className="h-10 w-full bg-gray-300"></div>
-        </div>
-
       </div>
     );
   };
@@ -71,8 +62,6 @@ function Skills() {
           <Link to="/dashboard/add-skill" className="ml-4 mb-4 font-bold inline-block cursor-pointer bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white rounded-md p-2 px-4">Add +</Link>
           {loading ? (
             <div className="space-y-4">
-              <Skeleton />
-              <Skeleton />
               <Skeleton />
             </div>
           ) : (
@@ -108,7 +97,7 @@ function Skills() {
                           <button onClick={() => setIsOpenModel(true)} className="flex gap-1 items-center cursor-pointer bg-red-500 hover:bg-red-600 active:bg-red-700 text-white px-3 py-2 rounded">
                             <RiDeleteBinLine /> <span className="hidden sm:inline">Delete</span>
                           </button>
-                           {isOpenModel && <Model setIsOpenModel={setIsOpenModel} deleteData={() => handleDeleteProject(skill._id)} />}
+                           {isOpenModel && <Model setIsOpenModel={setIsOpenModel} deleteData={() => handleDelete(skill._id)} />}
                         </td>
                       </tr>
                     ))}
