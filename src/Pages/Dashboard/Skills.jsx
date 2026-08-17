@@ -66,7 +66,7 @@ function Skills() {
             </div>
           ) : (
             <div>
-              {skills.length > 0 ? (
+              {skills && skills.length > 0 ? (
                 <table className="w-full table-fixed border-collapse">
                   <thead className="bg-gray-100 border-b border-gray-300 ">
                     <tr>
