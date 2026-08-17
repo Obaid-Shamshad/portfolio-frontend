@@ -10,6 +10,7 @@ function Projects() {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
     const [isOpenModel, setIsOpenModel] = useState(false);
+    const [deleteID, setDeleteID] = useState(null);
 
     useEffect(() => {
         const fetchProjects = async () => {
@@ -40,14 +41,14 @@ function Projects() {
 
     const Skeleton = () => {
         return (
-             <div className="flex items-center justify-around p-2">
-        <div className='flex flex-col gap-1 w-full'>
-          <div className='h-10 animate-pulse bg-gray-300 [animation-delay:0ms]'></div>
-          <div className='h-10 animate-pulse bg-gray-300 [animation-delay:100ms]'></div>
-          <div className='h-10 animate-pulse bg-gray-300 [animation-delay:300ms]'></div>
-          <div className='h-10 animate-pulse bg-gray-300 [animation-delay:400ms]'></div>
-        </div>
-      </div>
+            <div className="flex items-center justify-around p-2">
+                <div className='flex flex-col gap-1 w-full'>
+                    <div className='h-10 animate-pulse bg-gray-300 [animation-delay:0ms]'></div>
+                    <div className='h-10 animate-pulse bg-gray-300 [animation-delay:100ms]'></div>
+                    <div className='h-10 animate-pulse bg-gray-300 [animation-delay:300ms]'></div>
+                    <div className='h-10 animate-pulse bg-gray-300 [animation-delay:400ms]'></div>
+                </div>
+            </div>
         );
     };
 
@@ -90,11 +91,13 @@ function Projects() {
                                                         <Link to={`/dashboard/edit-project/${project._id}`} className="flex gap-1 items-center bg-blue-500 cursor-pointer text-white px-3 py-2 rounded hover:bg-blue-600 active:bg-blue-700">
                                                             <RiFileEditLine /> <span className="hidden sm:inline">Edit</span>
                                                         </Link>
-                                                        <button onClick={() => setIsOpenModel(true)} className="flex gap-1 items-center bg-red-500 text-white px-3 py-2 cursor-pointer rounded hover:bg-red-600 active:bg-red-700">
+                                                        <button onClick={() => {
+                                                            setIsOpenModel(true);
+                                                            setDeleteID(project._id)
+                                                        }} className="flex gap-1 items-center bg-red-500 text-white px-3 py-2 cursor-pointer rounded hover:bg-red-600 active:bg-red-700">
                                                             <RiDeleteBinLine /> <span className="hidden sm:inline">Delete</span>
                                                         </button>
-                                                        {isOpenModel && <Model setIsOpenModel={setIsOpenModel} deleteData={() => handleDeleteProject(project._id)} />
-                                                      }
+
                                                     </div>
                                                 </td>
                                             </tr>
@@ -105,6 +108,7 @@ function Projects() {
                             )}
                         </div>)}
                 </div>
+                {isOpenModel && <Model setIsOpenModel={setIsOpenModel} deleteData={() => handleDeleteProject(deleteID)} />}
             </div>
             <ToastContainer />
         </>
