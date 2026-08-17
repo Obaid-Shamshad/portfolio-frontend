@@ -11,6 +11,7 @@ function Skills() {
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isOpenModel, setIsOpenModel] = useState(false);
+  const [deleteID, setDeleteID] = useState(null);
 
   useEffect(() => {
     const fetchSkills = async () => {
@@ -92,10 +93,12 @@ function Skills() {
                             <RiFileEditLine /> <span className="hidden sm:inline">Edit</span>
                           </Link>
 
-                          <button onClick={() => setIsOpenModel(true)} className="flex gap-1 items-center cursor-pointer bg-red-500 hover:bg-red-600 active:bg-red-700 text-white px-3 py-2 rounded">
+                          <button onClick={() => {
+                            setIsOpenModel(true);
+                            setDeleteID(skill._id)
+                          }} className="flex gap-1 items-center cursor-pointer bg-red-500 hover:bg-red-600 active:bg-red-700 text-white px-3 py-2 rounded">
                             <RiDeleteBinLine /> <span className="hidden sm:inline">Delete</span>
                           </button>
-                           {isOpenModel && <Model setIsOpenModel={setIsOpenModel} deleteData={() => handleDelete(skill._id)} />}
                         </td>
                       </tr>
                     ))}
@@ -105,6 +108,7 @@ function Skills() {
               )}
             </div>)}
         </div>
+          {isOpenModel && <Model setIsOpenModel={setIsOpenModel} deleteData={() => handleDelete(deleteID)} />}
       </div>
       <ToastContainer />
 
