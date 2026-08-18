@@ -80,8 +80,8 @@ function EditProject() {
   return (
     <>
       <div className="lg:ml-64 flex justify-center items-center min-h-screen">
-        <form onSubmit={handleSubmit} className='mt-20 p-4 shadow-[0_0_5px_gray] flex flex-col gap-3 w-100 rounded-lg'>
-          <h1 className='text-xl font-semibold text-center py-2'>Edit Project</h1>
+        <form onSubmit={handleSubmit} className='mt-18 p-4 shadow-[0_0_5px_gray] flex flex-col gap-3 w-100 rounded-lg'>
+          <h1 className='text-xl font-bold text-center py-2'>Edit Project</h1>
           <div className='flex flex-col gap-1'>
             <label htmlFor="title">Title</label>
             <input type="text" name="title" id="title" value={formData?.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} className='border border-gray-400 p-1 px-2 rounded-md focus:shadow-[0_0_3px_blue] outline-none' required />
