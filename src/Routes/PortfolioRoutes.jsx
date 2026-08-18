@@ -14,14 +14,13 @@ import { getProfile } from '../api/profileAPI'
 
 function PortfolioRoutes({ setIsLoggedIn }) {
     const [profile, setProfile] = useState([])
-    console.log("Profile state:", profile)
+    
 
     useEffect(() => {
         const fetchProfile = async () => {
             try {
                 const response = await getProfile()
-                setProfile(response.data.profile)
-                console.log("Profile data fetched:", response.data.profile)
+                setProfile(response.data.profile);
             } catch (error) {
                 console.error('Error fetching profile:', error)
             }

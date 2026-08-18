@@ -23,7 +23,7 @@ function EditSkill() {
                 const response = await getSkill(skillId);
                 setLoading(false);
                 setSkillData(response.data.skill);
-                console.error('Error fetching skill:', error);
+                console.error('Error fetching skill');
             } catch (error) {
                 console.log(error);
                 setLoading(false);
