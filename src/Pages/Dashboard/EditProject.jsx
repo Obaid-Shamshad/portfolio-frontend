@@ -79,7 +79,7 @@ function EditProject() {
 
   return (
     <>
-      <div className="lg:ml-64 flex justify-center items-center min-h-screen">
+      <div className="lg:ml-64 flex justify-center items-center min-h-screen p-2">
         <form onSubmit={handleSubmit} className='mt-18 p-4 shadow-[0_0_5px_gray] flex flex-col gap-3 w-100 rounded-lg'>
           <h1 className='text-xl font-bold text-center py-2'>Edit Project</h1>
           <div className='flex flex-col gap-1'>

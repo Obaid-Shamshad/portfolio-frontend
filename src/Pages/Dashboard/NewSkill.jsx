@@ -43,7 +43,7 @@ function NewSkill() {
 
     return (
         <>
-            <div className="lg:ml-64 flex justify-center items-center min-h-screen">
+            <div className="lg:ml-64 flex justify-center items-center min-h-screen p-2">
                 <form onSubmit={handleSubmit} className='flex flex-col gap-4 w-100 p-4  shadow-[0_0_5px_gray] rounded-lg'>
                     <h1 className="text-xl font-bold text-center m-4">Add New Skill</h1>
                     <div className='flex flex-col gap-2'>
