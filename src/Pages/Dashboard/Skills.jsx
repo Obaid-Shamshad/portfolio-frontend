@@ -44,10 +44,10 @@ function Skills() {
     return (
       <div className="flex items-center justify-around p-2">
         <div className='flex flex-col gap-1 w-full'>
-          <div className='h-10 animate-pulse bg-gray-300 [animation-delay:0ms]'></div>
-          <div className='h-10 animate-pulse bg-gray-300 [animation-delay:100ms]'></div>
-          <div className='h-10 animate-pulse bg-gray-300 [animation-delay:300ms]'></div>
-          <div className='h-10 animate-pulse bg-gray-300 [animation-delay:400ms]'></div>
+          <div className='h-10 rounded-md animate-pulse bg-gray-300 [animation-delay:0ms]'></div>
+          <div className='h-10 rounded-md animate-pulse bg-gray-300 [animation-delay:100ms]'></div>
+          <div className='h-10 rounded-md animate-pulse bg-gray-300 [animation-delay:300ms]'></div>
+          <div className='h-10 rounded-md animate-pulse bg-gray-300 [animation-delay:400ms]'></div>
         </div>
       </div>
     );
